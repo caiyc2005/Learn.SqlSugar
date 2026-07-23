@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c ' *)",
+      "Bash(dotnet --version)",
+      "Bash(curl *)",
+      "Bash(curl -s http://localhost:5001/api/class/pagelist -X POST -H \"Content-Type: application/json\" -d '{}')",
+      "Bash(curl -s http://localhost:5001/api/swaggerlogin/checkurl -X POST -H \"Content-Type: application/json\")",
+      "Bash(curl -s http://localhost:5001/api/swaggerlogin/url -X POST -H \"Content-Type: application/json\" -d '{\"UserName\":\"admin\",\"Password\":\"cyc666\"}')",
+      "Bash(curl -v http://localhost:5001/api/swaggerlogin/url -X POST -H \"Content-Type: application/json\" -d '{\"UserName\":\"admin\",\"Password\":\"cyc666\"}')",
+      "Bash(curl -v http://localhost:5001/api/class/pagelist -X POST -H \"Content-Type: application/json\" -d '{}')",
+      "WebSearch",
+      "Bash(curl -v http://localhost:5001/api/swaggerlogin/checkurl -X POST)",
+      "WebFetch(domain:gitee.com)",
+      "Bash(kill %1)",
+      "Bash(wait)",
+      "WebFetch(domain:github.com)",
+      "Bash(dotnet tool *)",
+      "Bash(dotnet run *)",
+      "Bash(pkill -f \"dotnet.*token_gen\")"
+    ]
+  }
+}
