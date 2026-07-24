@@ -46,7 +46,7 @@ namespace Domain.Entitys
         /// 所属年级ID
         /// </summary>
         [SugarColumn(ColumnDescription = "所属年级ID", CreateTableFieldSort = 60)]
-        public Grade? InGradeID { get; set; }
+        public Guid? InGradeID { get; set; }
 
         /// <summary>
         /// 是否启用
