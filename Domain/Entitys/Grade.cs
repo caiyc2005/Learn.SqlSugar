@@ -39,5 +39,11 @@ namespace Domain.Entitys
         /// </summary>
         [Navigate(NavigateType.OneToOne, nameof(GradeManagers), nameof(Teacher.Id))]
         public Teacher? TeacherData { get; set; }
+
+        /// <summary>
+        /// 年级负责人信息
+        /// </summary>
+        [Navigate(NavigateType.OneToMany, nameof(Id), nameof(Class.GradeID))]
+        public List<Class> ClassesData { get; set; }
     }
 }
