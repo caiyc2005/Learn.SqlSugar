@@ -53,6 +53,13 @@ namespace Application.Constracts.Dtos
         public int SumNum { get; set; } = 0;
 
         /// <summary>
+        /// 所属年级ID
+        /// </summary>
+        [DisplayName("所属年级ID")]
+        [Required(ErrorMessage = "{0}必填")]
+        public Guid? InGradeID { get; set; }
+
+        /// <summary>
         /// 是否启用
         /// </summary>
         [DisplayName("是否启用")]
