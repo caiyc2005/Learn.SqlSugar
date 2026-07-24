@@ -41,9 +41,9 @@ namespace Domain.Entitys
         public Teacher? TeacherData { get; set; }
 
         /// <summary>
-        /// 年级负责人信息
+        /// 班级信息
         /// </summary>
         [Navigate(NavigateType.OneToMany, nameof(Id), nameof(Class.GradeID))]
-        public List<Class> ClassesData { get; set; }
+        public List<Class>? ClassesData { get; set; }
     }
 }
