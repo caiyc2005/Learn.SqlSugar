@@ -102,6 +102,18 @@ namespace Application.Constracts.Dtos
         /// 是否启用
         /// </summary>
         public bool IsEnable { get; set; }
+        public GradeResponse? GradeData { get; set; }
+
+        /// <summary>
+        /// 班主任信息
+        /// </summary>
+        //public Teacher? TeacherData { get; set; }
+
+
+        /// <summary>
+        /// 班级学生信息
+        /// </summary>
+        //public List<Student>? StudentData { get; set; }
     }
 
     /// <summary>

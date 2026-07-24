@@ -20,7 +20,19 @@ namespace Domain.Entitys
         [SugarColumn(ColumnDescription = "年级负责人", CreateTableFieldSort = 20)]
         public List<string>? GradeManagers { get; set; }
 
+        /// <summary>
+        /// 学校ID
+        /// </summary>
+        [SugarColumn(ColumnDescription = "学校ID", CreateTableFieldSort = 30)]
+        public string? SchoolId { get; set; }
+
         //*************************************导航*************************************
+
+        /// <summary>
+        /// 学校信息
+        /// </summary>
+        [Navigate(NavigateType.OneToOne, nameof(SchoolId), nameof(School.Id))]
+        public School? SchoolData { get; set; }
 
         /// <summary>
         /// 年级负责人信息
