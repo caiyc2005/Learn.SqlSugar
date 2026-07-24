@@ -115,6 +115,10 @@ namespace Application.Constracts.Dtos
         public GradeResponse? GradeData { get; set; }
 
         /// <summary>
+        /// 年级ID，测试显示
+        /// </summary>
+        public Guid GradeId { get; set; }
+        /// <summary>
         /// 班主任信息
         /// </summary>
         //public Teacher? TeacherData { get; set; }
