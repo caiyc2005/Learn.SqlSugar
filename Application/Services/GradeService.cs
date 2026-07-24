@@ -11,11 +11,11 @@ using System.Text;
 
 namespace Application.Services
 {
-    [ApiDescriptionSettings(groups: ApiGroups.Main, Order = 8500, Tag = "年级信息管理")]
-    public class GradeService : CrudAppService<Grade, GradeResponse, GradePageListRequest,
-    CreateOrUpdateGradeRequest, Guid>, IDynamicApiController
+    [ApiDescriptionSettings(groups: ApiGroups.Main, Order = 9000, Tag = "学校信息管理")]
+    public class SchoolService : CrudAppService<School, SchoolResponse, SchoolPageListRequest,
+    CreateOrUpdateSchoolRequest, Guid>, IDynamicApiController
     {
-        public GradeService(IRepo<Grade, Guid> repository) : base(repository)
+        public SchoolService(IRepo<School, Guid> repository) : base(repository)
         {
 
         }
