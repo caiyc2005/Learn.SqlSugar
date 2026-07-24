@@ -43,13 +43,26 @@ namespace Domain.Entitys
         public int SumNum { get; set; } = 0;
 
         /// <summary>
+        /// 所属年级ID
+        /// </summary>
+        [SugarColumn(ColumnDescription = "所属年级ID", CreateTableFieldSort = 60)]
+        public Grade InGradeID { get; set; }
+
+        /// <summary>
         /// 是否启用
         /// </summary>
-        [SugarColumn(ColumnDescription = "是否启用", CreateTableFieldSort = 60)]
-        public bool IsEnable { get; set; } 
+        [SugarColumn(ColumnDescription = "是否启用", CreateTableFieldSort = 80)]
+        public bool IsEnable { get; set; }
 
+        
 
         //*************************************导航*************************************
+
+        /// <summary>
+        /// 所属年级信息
+        /// </summary>
+        [Navigate(NavigateType.OneToOne, nameof(InGradeID), nameof(Grade.Id))]
+        public Grade? GradeData { get; set; }
 
         /// <summary>
         /// 班主任信息

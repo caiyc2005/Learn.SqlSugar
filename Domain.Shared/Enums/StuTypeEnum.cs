@@ -16,5 +16,8 @@ namespace Domain.Shared.Enums
         [Description("休学")]
         XiuXue = 3,
 
+        [Description("退学")]
+        TuiXue = 4,
+
     }
 }
