@@ -57,7 +57,7 @@ namespace Application.Constracts.Dtos
         /// </summary>
         [DisplayName("所属年级ID")]
         [Required(ErrorMessage = "{0}必填")]
-        public Guid? InGradeID { get; set; }
+        public Guid? GradeID { get; set; }
 
         /// <summary>
         /// 是否启用
@@ -109,6 +109,9 @@ namespace Application.Constracts.Dtos
         /// 是否启用
         /// </summary>
         public bool IsEnable { get; set; }
+        /// <summary>
+        /// 年级信息
+        /// </summary>
         public GradeResponse? GradeData { get; set; }
 
         /// <summary>

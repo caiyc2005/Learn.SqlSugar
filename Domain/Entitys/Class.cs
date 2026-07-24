@@ -46,7 +46,7 @@ namespace Domain.Entitys
         /// 所属年级ID
         /// </summary>
         [SugarColumn(ColumnDescription = "所属年级ID", CreateTableFieldSort = 60)]
-        public Guid? InGradeID { get; set; }
+        public Guid? GradeID { get; set; }
 
         /// <summary>
         /// 是否启用
@@ -61,7 +61,7 @@ namespace Domain.Entitys
         /// <summary>
         /// 所属年级信息
         /// </summary>
-        [Navigate(NavigateType.OneToOne, nameof(InGradeID), nameof(Grade.Id))]
+        [Navigate(NavigateType.OneToOne, nameof(GradeID), nameof(Grade.Id))]
         public Grade? GradeData { get; set; }
 
         /// <summary>
