@@ -6,6 +6,7 @@ using Furion.FriendlyException;
 using Microsoft.AspNetCore.Mvc;
 using SqlSugarCoreExtra.Furion.Component.Repositorys;
 using SqlSugarCoreExtra.Furion.Component.ServiceExts;
+using SqlSugarCoreExtra.Furion.Component.ServiceExts.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -21,6 +22,11 @@ namespace Application.Services
         public ClassService(IRepo<Class, Guid> repository,IRepo<Student, Guid> studentRepo) : base(repository)
         {
             _studentRepo = studentRepo;
+        }
+
+        public override Task<List<ClassResponse>> ListAsync(ListInput input)
+        {
+            return base.ListAsync(input);
         }
 
         /// <summary>
@@ -44,13 +50,11 @@ namespace Application.Services
                 throw Oops.Bah("班级下仍存在学生，请先移除后再删除班级！");
             }
 
-            var result = await _repository.DeleteByIdAsync(id);
-            if (!result)
-                throw Oops.Bah($"删除班级失败");
-
-
-            return true;
-            //return base.DeleteSoftAsync(id);
+            //var result = await _repository.DeleteByIdAsync(id);
+            //if (!result)
+            //    throw Oops.Bah($"删除班级失败");
+            //return true;
+            return await base.DeleteSoftAsync(id);
         }
     }
 }
