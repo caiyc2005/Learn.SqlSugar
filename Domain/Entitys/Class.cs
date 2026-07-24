@@ -15,7 +15,7 @@ namespace Domain.Entitys
         /// <summary>
         /// 班级编码
         /// </summary>
-        [SugarColumn(ColumnDescription = "班级编码", Length = 20, CreateTableFieldSort = 10)]
+        [SugarColumn(ColumnDescription = "班级编码", IsNullable = false, Length = 20, CreateTableFieldSort = 10)]
         public string? ClassCode { get; set; }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Domain.Entitys
         /// 所属年级ID
         /// </summary>
         [SugarColumn(ColumnDescription = "所属年级ID", CreateTableFieldSort = 60)]
-        public Grade InGradeID { get; set; }
+        public Grade? InGradeID { get; set; }
 
         /// <summary>
         /// 是否启用
