@@ -31,7 +31,7 @@ namespace Application.Constracts.Dtos
         /// </summary>
         [DisplayName("学校ID")]
         [Required(ErrorMessage = "{0}必填")]
-        [MaxLength(20, ErrorMessage = "{0}长度不能超过{1}!")]
+        //[MaxLength(20, ErrorMessage = "{0}长度不能超过{1}!")]
         public string? SchoolId { get; set; }
 
 
