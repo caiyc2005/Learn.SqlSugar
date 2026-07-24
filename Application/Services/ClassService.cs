@@ -1,8 +1,10 @@
 ﻿using Application.Constracts.Dtos;
+using Core.Furion.Component.Contracts;
 using Domain.Entitys;
 using Domain.Shared.Consts;
 using Furion.DynamicApiController;
 using Furion.FriendlyException;
+using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using SqlSugarCoreExtra.Furion.Component.Repositorys;
 using SqlSugarCoreExtra.Furion.Component.ServiceExts;
@@ -27,6 +29,20 @@ namespace Application.Services
         public override Task<List<ClassResponse>> ListAsync(ListInput input)
         {
             return base.ListAsync(input);
+        }
+
+        /// <summary>
+        /// 班级数据详细查询
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public override async Task<ClassResponse> GetAsync(Guid id)
+        {
+            var q = await Queryable(x => x.Id == id)
+                .Includes(x => x.GradeData)
+                .FirstAsync();
+            return q.Adapt<ClassResponse>();
+
         }
 
         /// <summary>
