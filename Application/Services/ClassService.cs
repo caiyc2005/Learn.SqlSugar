@@ -6,6 +6,7 @@ using Furion.DynamicApiController;
 using Furion.FriendlyException;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
+using SqlSugar;
 using SqlSugarCoreExtra.Furion.Component.Repositorys;
 using SqlSugarCoreExtra.Furion.Component.ServiceExts;
 using SqlSugarCoreExtra.Furion.Component.ServiceExts.Models;
@@ -42,7 +43,16 @@ namespace Application.Services
                 .Includes(x => x.GradeData)
                 .FirstAsync();
             return q.Adapt<ClassResponse>();
+        }
+        public override async Task<PageData<ClassResponse>> PageListAsync(ClassPageListRequest input)
+        {
+            RefAsync<int> totalNumber = 0;
+           var q =await Queryable(input)
+                .WhereIF(!string.IsNullOrEmpty(input.ClassName), x => x.ClassName.Contains(input.ClassName))
+                .Includes(x => x.GradeData).ToPageListAsync(input.PageIndex, input.PageSize, totalNumber);
 
+            //IEnumerable<T> source, int pageIndex, int pageSize, int totalCount
+            return new PageData<ClassResponse>(q.Adapt<List<ClassResponse>>(), input.PageIndex, input.PageSize, totalNumber);
         }
 
         /// <summary>

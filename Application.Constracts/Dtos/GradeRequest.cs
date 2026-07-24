@@ -60,6 +60,9 @@ namespace Application.Constracts.Dtos
         /// </summary>
         public string? SchoolId { get; set; }
 
+
+
+
         /// <summary>
         /// 学校信息
         /// </summary>
@@ -69,10 +72,16 @@ namespace Application.Constracts.Dtos
         /// 年级负责人信息
         /// </summary>
         //public Teacher? TeacherData { get; set; }
+
+        /// <summary>
+        /// 班级信息
+        /// </summary>
+ 
+        public List<ClassResponse>? ClassList { get; set; }
     }
 
     public class GradePageListRequest : PageListInput
     {
-
+        public string? ClassName { get; set; }
     }
 }

@@ -43,7 +43,7 @@ namespace Domain.Entitys
         /// <summary>
         /// 班级信息
         /// </summary>
-        [Navigate(NavigateType.OneToMany, nameof(Id), nameof(Class.GradeID))]
-        public List<Class>? ClassesData { get; set; }
+        [Navigate(NavigateType.OneToMany,  nameof(Class.GradeID))]
+        public List<Class>? ClassList { get; set; }
     }
 }

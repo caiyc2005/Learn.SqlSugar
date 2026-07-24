@@ -135,6 +135,6 @@ namespace Application.Constracts.Dtos
     /// </summary>
     public class ClassPageListRequest : PageListInput
     {
-
+        public string? ClassName { get; set; }
     }
 }
