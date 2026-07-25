@@ -35,9 +35,9 @@ namespace Domain.Entitys
         //*************************************导航*************************************
 
         /// <summary>
-        /// 学生信息
+        /// 学生信息，多对一
         /// </summary>
-        [Navigate(NavigateType.OneToOne, nameof(StudentId), nameof(Student.Id))]
+        [Navigate(NavigateType.OneToOne, nameof(Student.Id))]
         public Student? StudentData { get; set; }
     }
 }
