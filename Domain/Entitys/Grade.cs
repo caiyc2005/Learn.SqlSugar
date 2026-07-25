@@ -17,6 +17,7 @@ namespace Domain.Entitys
         /// <summary>
         /// 年级负责人ID列表
         /// </summary>
+        // 该字段疑似不需要，可以通过导航属性获取年级负责人信息，实际场景建议删除该字段（Teacher表里存有所属年级数据）
         [SugarColumn(ColumnDescription = "年级负责人", CreateTableFieldSort = 20)]
         public List<string>? GradeManagers { get; set; }
 
@@ -39,10 +40,10 @@ namespace Domain.Entitys
 
 
         /// <summary>
-        /// 年级负责人信息
+        /// 年级负责人信息，一对多
         /// </summary>
-        [Navigate(NavigateType.OneToOne, nameof(GradeManagers), nameof(Teacher.Id))]
-        public Teacher? TeacherData { get; set; }
+        [Navigate(NavigateType.OneToMany, nameof(Teacher.GradeID))]//通过本表的主键，关联是从表的xx字段
+        public List<Teacher>? TeacherList { get; set; }
 
         /// <summary>
         /// 班级信息

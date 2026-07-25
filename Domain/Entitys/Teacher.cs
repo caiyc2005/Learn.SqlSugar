@@ -45,7 +45,17 @@ namespace Domain.Entitys
         [SugarColumn(ColumnDescription = "离职时间", CreateTableFieldSort = 80)]
         public DateTime? TeacherOutDate { get; set; }
 
-        //*************************************导航*************************************
+        /// <summary>
+        /// 所属年级ID
+        /// </summary>
+        [SugarColumn(ColumnDescription = "所属年级ID", CreateTableFieldSort = 60)]
+        public Guid? GradeID { get; set; }
 
+        //*************************************导航*************************************
+        /// <summary>
+        /// 年级信息导航，多对一
+        /// </summary>
+        [Navigate(NavigateType.OneToOne, nameof(GradeID), nameof(Grade.Id))]
+        public Grade? GradeData { get; set; }
     }
 }
