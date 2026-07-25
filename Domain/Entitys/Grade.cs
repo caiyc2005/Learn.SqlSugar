@@ -25,7 +25,7 @@ namespace Domain.Entitys
         /// 学校ID
         /// </summary>
         [SugarColumn(ColumnDescription = "学校ID", CreateTableFieldSort = 30)]
-        public Guid? SchoolId { get; set; }//注意字段类型匹配！
+        public Guid? SchoolId { get; set; } // 注意字段类型匹配！
 
         //*************************************导航*************************************
 
