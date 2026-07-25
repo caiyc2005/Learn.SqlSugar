@@ -135,6 +135,10 @@ namespace Application.Constracts.Dtos
     /// </summary>
     public class ClassPageListRequest : PageListInput
     {
+        /// <summary>
+        /// 班级名称
+        /// </summary>
+        // 分页查询的时候查询条件，配合WHEREIF使用
         public string? ClassName { get; set; }
     }
 }

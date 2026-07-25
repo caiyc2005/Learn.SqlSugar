@@ -17,7 +17,7 @@ namespace Application.Services
     {
         public SchoolService(IRepo<School, Guid> repository) : base(repository)
         {
-
+            
         }
     }
 }
