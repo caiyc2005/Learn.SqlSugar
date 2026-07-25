@@ -14,7 +14,7 @@ using System.Text;
 
 namespace Application.Services
 {
-    [ApiDescriptionSettings(groups: ApiGroups.Main, Order = 9000, Tag = "学校信息管理")]
+    [ApiDescriptionSettings(groups: ApiGroups.Main, Order = 9000, Tag = "年级信息管理")]
     public class GradeService : CrudAppService<Grade, GradeResponse, GradePageListRequest,
     CreateOrUpdateGradeRequest, Guid>, IDynamicApiController
     {
@@ -23,6 +23,11 @@ namespace Application.Services
 
         }
 
+        /// <summary>
+        /// 年级信息分页，可查出班级信息。
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public override async Task<PageData<GradeResponse>> PageListAsync(GradePageListRequest input)
         {
             RefAsync<int> totalNumber = 0;
