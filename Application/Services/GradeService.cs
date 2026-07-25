@@ -24,7 +24,7 @@ namespace Application.Services
         }
 
         /// <summary>
-        /// 年级信息分页，可查出班级信息。
+        /// 年级信息分页，可查所在学校具体信息。
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
@@ -32,7 +32,9 @@ namespace Application.Services
         {
             RefAsync<int> totalNumber = 0;
             var q = await Queryable(input)
-                 .Includes(x => x.ClassList.WhereIF(!string.IsNullOrEmpty(input.ClassName), x => x.ClassName.Contains(input.ClassName)).ToList())
+                .Includes(x => x.SchoolData)
+                //
+                //.Includes(x => x.ClassList.WhereIF(!string.IsNullOrEmpty(input.ClassName), x => x.ClassName.Contains(input.ClassName)).ToList())//筛选字段
                  .ToPageListAsync(input.PageIndex, input.PageSize, totalNumber);
 
             //IEnumerable<T> source, int pageIndex, int pageSize, int totalCount

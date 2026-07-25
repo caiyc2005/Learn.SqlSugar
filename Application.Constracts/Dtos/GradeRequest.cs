@@ -58,8 +58,7 @@ namespace Application.Constracts.Dtos
         /// <summary>
         /// 学校ID
         /// </summary>
-        public string? SchoolId { get; set; }
-
+        //public string? SchoolId { get; set; }//取消返回学校ID，在学校的信息里面会返回带有学校ID字段的数据信息
 
 
 
