@@ -56,7 +56,12 @@ namespace Domain.Entitys
         [SugarColumn(ColumnDescription = "学校校长最新换届时间", CreateTableFieldSort = 200)]
         public DateTime? ManagerUpdateDate { get; set; }
 
-        
+        //*************************************导航*************************************
+        /// <summary>
+        /// 学校的年级信息
+        /// </summary>
+        [Navigate(NavigateType.OneToMany, nameof(Grade.SchoolId))]
+        public List<Grade>? GradeList { get; set; }
 
     }
 }

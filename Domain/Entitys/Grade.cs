@@ -31,8 +31,12 @@ namespace Domain.Entitys
         /// <summary>
         /// 学校信息
         /// </summary>
-        [Navigate(NavigateType.OneToOne, nameof(SchoolId), nameof(School.Id))]
+        //[Navigate(NavigateType.OneToOne, nameof(SchoolId), nameof(School.Id))]
+        //因为框架的简写模式会自动识别目标类的主键，与上面的方式等价，下面的方式是简写模式
+        [Navigate(NavigateType.OneToOne, nameof(SchoolId))]
         public School? SchoolData { get; set; }
+        //年级对学校是多对一，具体方法与一对一的使用方法一致。
+
 
         /// <summary>
         /// 年级负责人信息
