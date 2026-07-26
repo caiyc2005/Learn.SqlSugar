@@ -32,10 +32,12 @@ namespace Application.Services
         {
             RefAsync<int> totalNumber = 0;
             var q = await Queryable(input)
+                // 1、学校编号筛选
                 .Includes(x => x.SchoolData)
-                //
-                //.Includes(x => x.ClassList.WhereIF(!string.IsNullOrEmpty(input.ClassName), x => x.ClassName.Contains(input.ClassName)).ToList())//筛选字段
-                 .ToPageListAsync(input.PageIndex, input.PageSize, totalNumber);
+                .WhereIF(!string.IsNullOrEmpty(input.SchoolCode),x => x.SchoolData.SchoolCode == input.SchoolCode)
+                // 2、班级名称筛选
+                .Includes(x => x.ClassList.WhereIF(!string.IsNullOrEmpty(input.ClassName), x => x.ClassName.Contains(input.ClassName)).ToList())
+                .ToPageListAsync(input.PageIndex, input.PageSize, totalNumber);
 
             //IEnumerable<T> source, int pageIndex, int pageSize, int totalCount
             return new PageData<GradeResponse>(q.Adapt<List<GradeResponse>>(), input.PageIndex, input.PageSize, totalNumber);

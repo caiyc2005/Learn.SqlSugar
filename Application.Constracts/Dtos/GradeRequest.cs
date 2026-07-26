@@ -81,6 +81,14 @@ namespace Application.Constracts.Dtos
 
     public class GradePageListRequest : PageListInput
     {
+        /// <summary>
+        /// 学校编码
+        /// </summary>
+        public string? SchoolCode { get; set; }
+
+        /// <summary>
+        /// 班级名称
+        /// </summary>
         public string? ClassName { get; set; }
     }
 }
