@@ -65,27 +65,39 @@ namespace Application.Services
         public async Task<List<ClassResponse>> GetClassList(Guid id)
         {
             #region 方案一：导航关联查询
-            var grade = await Queryable()// 1、查出年级信息
-                .Includes(x => x.ClassList) // 2、加载班级数据
-                .FirstAsync(x => x.Id == id); // 3、执行查询
-            // 处理年级数据为空
-            if(grade == null)
-            {
-                throw Oops.Bah($"年级{id}不存在");
-            }
-            // 处理年级下面没有班级数据的情况
-            if (grade.ClassList == null || !grade.ClassList.Any())
-            {
-                return new List<ClassResponse>();
-            }
-            return grade.ClassList.Adapt<List<ClassResponse>>();
+            //var grade = await Queryable()// 1、查出年级信息
+            //    .Includes(x => x.ClassList) // 2、加载班级数据
+            //    .FirstAsync(x => x.Id == id); // 3、执行查询
+            //// 处理年级数据为空
+            //if(grade == null)
+            //{
+            //    throw Oops.Bah($"年级{id}不存在");
+            //}
+            //// 处理年级下面没有班级数据的情况
+            //if (grade.ClassList == null || !grade.ClassList.Any())
+            //{
+            //    return new List<ClassResponse>();
+            //}
+            //return grade.ClassList.Adapt<List<ClassResponse>>();
             #endregion
 
             #region 方案2：直接查询班级表
-            //var classlist = _classRepo.Queryable()
-            //    .Where(x => x.GradeID == id)
-            //    .ToListAsync();
-            //return classlist.Adapt<List<ClassResponse>>();
+            //没有 await 时，Adapt 可能无法正确处理 Task，导致结果为空。
+            //加上 await 后，ToListAsync() 真正执行了查询，拿到了数据，所以 Adapt 才能正确映射。
+            var classlist = await _classRepo.Queryable()
+                .Where(x => x.GradeID == id)
+                .ToListAsync();
+
+            //var result = classlist.Adapt<List<ClassResponse>>();
+            //// 🔍 调试：先看原始数据
+            //if (classlist != null && classlist.Any())
+            //{
+            //    Console.WriteLine($"原始数据条数: {classlist.Count}");
+            //    Console.WriteLine($"第一个班级名称: {classlist.First().ClassName}");
+            //}
+            //Console.WriteLine($"映射后条数: {result?.Count ?? 0}");
+            //return result;
+            return classlist.Adapt<List<ClassResponse>>();
             #endregion
         }
     }
