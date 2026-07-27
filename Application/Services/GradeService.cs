@@ -67,7 +67,6 @@ namespace Application.Services
             #region 方案一：导航关联查询
             var grade = await Queryable()// 1、查出年级信息
                 .Includes(x => x.ClassList) // 2、加载班级数据
-                //.Includes(x => x.ClassList.First().GradeData)//加这一行会报错 
                 .FirstAsync(x => x.Id == id); // 3、执行查询
             // 处理年级数据为空
             if(grade == null)
