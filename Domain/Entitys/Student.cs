@@ -39,13 +39,13 @@ namespace Domain.Entitys
         /// <summary>
         /// 班级信息
         /// </summary>
-        [Navigate(NavigateType.OneToOne, nameof(Class.Id))]
+        [Navigate(NavigateType.OneToOne,nameof(ClassId), nameof(Class.Id))]
         public Class? ClassData { get; set; }
 
         /// <summary>
         /// 家长信息，一对多
         /// </summary>
-        [Navigate(NavigateType.OneToOne, nameof(Parent.StudentId))]
+        [Navigate(NavigateType.OneToMany, nameof(Parent.StudentId))]
         public List<Parent> ParentList { get; set; }
 
     }

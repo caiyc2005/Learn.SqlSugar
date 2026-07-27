@@ -37,8 +37,8 @@ namespace Domain.Entitys
         /// <summary>
         /// 学生信息
         /// </summary>
-        //多对一
-        [Navigate(NavigateType.OneToOne, nameof(Student.Id))]
+        //多对一，多对一就是一对一
+        [Navigate(NavigateType.OneToOne, nameof(StudentId),nameof(Student.Id))]
         public Student? StudentData { get; set; }
     }
 }
