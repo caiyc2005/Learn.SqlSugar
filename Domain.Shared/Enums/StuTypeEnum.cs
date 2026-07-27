@@ -8,7 +8,7 @@ namespace Domain.Shared.Enums
     public enum StuTypeEnum
     {
         [Description("待入学")]
-        NotIn = 1,
+        NotIn = 0,
 
         [Description("正常")]
         OK = 1,
