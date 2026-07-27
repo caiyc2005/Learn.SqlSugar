@@ -42,5 +42,15 @@ namespace Application.Services
             //IEnumerable<T> source, int pageIndex, int pageSize, int totalCount
             return new PageData<GradeResponse>(q.Adapt<List<GradeResponse>>(), input.PageIndex, input.PageSize, totalNumber);
         }
+
+        /// <summary>
+        /// 导出Exccel重写
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public override Task<IActionResult> ExportAsync(GradePageListRequest input)
+        {
+            return base.ExportAsync(input);
+        }
     }
 }
