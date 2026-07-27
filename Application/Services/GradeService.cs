@@ -3,6 +3,7 @@ using Core.Furion.Component.Contracts;
 using Domain.Entitys;
 using Domain.Shared.Consts;
 using Furion.DynamicApiController;
+using Furion.FriendlyException;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using SqlSugar;
@@ -18,9 +19,12 @@ namespace Application.Services
     public class GradeService : CrudAppService<Grade, GradeResponse, GradePageListRequest,
     CreateOrUpdateGradeRequest, Guid>, IDynamicApiController
     {
-        public GradeService(IRepo<Grade, Guid> repository) : base(repository)
-        {
+        private readonly IRepo<Class, Guid> _classRepo;//注入班级仓储
+        //private readonly IRepo<Student, Guid> _studentRepo;//注入学生仓储
 
+        public GradeService(IRepo<Grade, Guid> repository, IRepo<Class, Guid> class_repository) : base(repository)
+        {
+            _classRepo = class_repository;
         }
 
         /// <summary>
@@ -51,6 +55,39 @@ namespace Application.Services
         public override Task<IActionResult> ExportAsync(GradePageListRequest input)
         {
             return base.ExportAsync(input);
+        }
+
+        /// <summary>
+        /// 获取特定年级下的班级列表
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public async Task<List<ClassResponse>> GetClassList(Guid id)
+        {
+            #region 方案一：导航关联查询
+            var grade = await Queryable()// 1、查出年级信息
+                .Includes(x => x.ClassList) // 2、加载班级数据
+                //.Includes(x => x.ClassList.First().GradeData)//加这一行会报错 
+                .FirstAsync(x => x.Id == id); // 3、执行查询
+            // 处理年级数据为空
+            if(grade == null)
+            {
+                throw Oops.Bah($"年级{id}不存在");
+            }
+            // 处理年级下面没有班级数据的情况
+            if (grade.ClassList == null || !grade.ClassList.Any())
+            {
+                return new List<ClassResponse>();
+            }
+            return grade.ClassList.Adapt<List<ClassResponse>>();
+            #endregion
+
+            #region 方案2：直接查询班级表
+            //var classlist = _classRepo.Queryable()
+            //    .Where(x => x.GradeID == id)
+            //    .ToListAsync();
+            //return classlist.Adapt<List<ClassResponse>>();
+            #endregion
         }
     }
 }

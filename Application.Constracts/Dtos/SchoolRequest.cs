@@ -118,6 +118,16 @@ namespace Application.Constracts.Dtos
         /// 学校校长最新换届时间
         /// </summary>
         public DateTime? ManagerUpdateDate { get; set; }
+
+        /// <summary>
+        /// 班级列表
+        /// </summary>
+        public List<ClassResponse>? ClassList { get; set; }
+
+        /// <summary>
+        /// 年级列表
+        /// </summary>
+        public List<GradeResponse>? GradeList { get; set; }
     }
 
     /// <summary>
