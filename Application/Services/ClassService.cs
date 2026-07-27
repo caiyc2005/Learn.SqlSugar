@@ -44,6 +44,12 @@ namespace Application.Services
                 .FirstAsync();
             return q.Adapt<ClassResponse>();
         }
+
+        /// <summary>
+        /// 重写分页
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public override async Task<PageData<ClassResponse>> PageListAsync(ClassPageListRequest input)
         {
             RefAsync<int> totalNumber = 0;
