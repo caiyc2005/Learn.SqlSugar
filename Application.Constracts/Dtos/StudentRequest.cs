@@ -52,7 +52,7 @@ namespace Application.Constracts.Dtos
         }
     }
 
-    public class StudentResponse
+    public class StudentResponse : OutputKey<Guid>
     {
         /// <summary>
         /// 学号
