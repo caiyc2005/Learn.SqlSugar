@@ -40,17 +40,8 @@ namespace Application.Constracts.Dtos
         /// </summary>
         [DisplayName("学生ID")]
         [Required(ErrorMessage = "{0}必填")]
-        [MaxLength(50, ErrorMessage = "{0}长度不能超过{1}!")]
+        //[MaxLength(50, ErrorMessage = "{0}长度不能超过{1}!")]
         public Guid? StudentId { get; set; }
-
-        //*************************************导航*************************************
-
-        /// <summary>
-        /// 学生信息
-        /// </summary>
-        //多对一
-        [Navigate(NavigateType.OneToOne, nameof(StudentId))]
-        public StudentResponse? StudentData { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
