@@ -64,7 +64,7 @@ namespace Application.Services
         /// <returns></returns>
         public async Task<List<ClassResponse>> GetClassList(Guid id)
         {
-            #region 方案一：导航关联查询
+            #region 方案1：导航关联查询
             //var grade = await Queryable()// 1、查出年级信息
             //    .Includes(x => x.ClassList) // 2、加载班级数据
             //    .FirstAsync(x => x.Id == id); // 3、执行查询
