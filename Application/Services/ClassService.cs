@@ -12,6 +12,7 @@ using SqlSugarCoreExtra.Furion.Component.ServiceExts;
 using SqlSugarCoreExtra.Furion.Component.ServiceExts.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace Application.Services
@@ -22,9 +23,20 @@ namespace Application.Services
     {
         
         private readonly IRepo<Student, Guid> _studentRepo;//注入学生仓储
-        public ClassService(IRepo<Class, Guid> repository,IRepo<Student, Guid> studentRepo) : base(repository)
+        private readonly IRepo<Teacher, Guid> _teacherRepo;//注入教师仓储
+
+        /// <summary>
+        /// 依赖注入
+        /// </summary>
+        /// <param name="repository"></param>
+        /// <param name="studentRepo"></param>
+        /// <param name="teacherRepo"></param>
+        public ClassService(IRepo<Class, Guid> repository,
+                            IRepo<Student, Guid> studentRepo,
+                            IRepo<Teacher, Guid> teacherRepo) : base(repository)
         {
             _studentRepo = studentRepo;
+            _teacherRepo = teacherRepo;
         }
 
         /// <summary>
@@ -92,6 +104,35 @@ namespace Application.Services
             //    throw Oops.Bah($"删除班级失败");
             //return true;
             return await base.DeleteSoftAsync(id);
+        }
+
+        [DisplayName("分配班主任")]
+        public async Task<bool> SetClassManagerAsync(Guid classid,Guid teacherid)
+        {
+            var isclass = await _repository.QueryByIdAsync(classid);
+            if (isclass == null)
+            {
+                throw Oops.Bah("班级不存在！");
+            }
+            var gradeid_class = isclass.GradeID;
+            Console.WriteLine("gradeid_class" + gradeid_class);
+
+            var isteacher = await _teacherRepo.QueryByIdAsync(teacherid);
+            if(isteacher == null)
+            {
+                throw Oops.Bah("教师不存在，请重新选择！");
+            }
+            var gradeid_teacher = isteacher.GradeID;
+            Console.WriteLine("gradeid_teacher" + gradeid_teacher);
+            if (!gradeid_class.Equals(gradeid_teacher))
+            {
+                throw Oops.Bah("教师暂不属于该年级，请重新选择！");
+            }
+
+            var newclass = isclass;
+            newclass.TeacherId = isteacher.Id;
+            newclass.TeacherName = isteacher.TeacherName;
+            return await _repository.UpdateAsync(newclass);
         }
     }
 }
