@@ -30,7 +30,7 @@ namespace Application.Constracts.Dtos
         /// </summary>
         [DisplayName("班级ID")]
         //[Required(ErrorMessage = "{0}必填")]
-        [MaxLength(50, ErrorMessage = "{0}长度不能超过{1}!")]
+        //[MaxLength(50, ErrorMessage = "{0}长度不能超过{1}!")]
         public Guid? ClassId { get; set; }
 
         /// <summary>

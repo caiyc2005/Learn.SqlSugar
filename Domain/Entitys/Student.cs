@@ -24,7 +24,7 @@ namespace Domain.Entitys
         /// <summary>
         /// 班级ID
         /// </summary>
-        [SugarColumn(ColumnDescription = "班级ID", Length = 50, CreateTableFieldSort = 30)]
+        [SugarColumn(ColumnDescription = "班级ID", CreateTableFieldSort = 30)]
         public Guid? ClassId { get; set; }
 
 
