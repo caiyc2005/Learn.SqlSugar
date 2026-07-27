@@ -38,7 +38,6 @@ namespace Application.Constracts.Dtos
         /// </summary>
         [DisplayName("学生类型")]
         [Required(ErrorMessage = "{0}必填")]
-        [MaxLength(50, ErrorMessage = "{0}长度不能超过{1}!")]
         public StuTypeEnum StuType { get; set; }
 
 

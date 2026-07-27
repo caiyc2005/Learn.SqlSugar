@@ -31,7 +31,7 @@ namespace Domain.Entitys
         /// <summary>
         /// 学生类型
         /// </summary>
-        [SugarColumn(ColumnDescription = "学生类型", Length = 50, CreateTableFieldSort = 50)]
+        [SugarColumn(ColumnDescription = "学生类型", CreateTableFieldSort = 50)]
         public StuTypeEnum StuType { get; set; }
 
         //*************************************导航*************************************
