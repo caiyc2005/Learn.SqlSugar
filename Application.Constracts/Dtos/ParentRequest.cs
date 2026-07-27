@@ -1,4 +1,5 @@
 ﻿using SqlSugar;
+using SqlSugarCoreExtra.Furion.Component.ServiceExts.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -59,7 +60,7 @@ namespace Application.Constracts.Dtos
 
         
     }
-    public class ParentResponse
+    public class ParentResponse : OutputKey<Guid>
     {
         /// <summary>
         /// 家长编码
@@ -90,7 +91,7 @@ namespace Application.Constracts.Dtos
         public StudentResponse? StudentData { get; set; }
     }
 
-    public class ParentlPageListRequest
+    public class ParentPageListRequest : PageListInput
     {
 
     }
