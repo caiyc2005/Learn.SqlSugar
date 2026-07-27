@@ -27,6 +27,11 @@ namespace Application.Services
             _studentRepo = studentRepo;
         }
 
+        /// <summary>
+        /// 班级列表查询
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public override Task<List<ClassResponse>> ListAsync(ListInput input)
         {
             return base.ListAsync(input);
