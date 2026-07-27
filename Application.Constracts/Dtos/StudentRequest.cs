@@ -12,8 +12,7 @@ namespace Application.Constracts.Dtos
         /// <summary>
         /// 学号
         /// </summary>
-        [SugarColumn(ColumnDescription = "学生学号", Length = 20, CreateTableFieldSort = 10)]
-        [DisplayName("班级编码")]
+        [DisplayName("学生学号")]
         [Required(ErrorMessage = "{0}必填")]
         [MaxLength(20, ErrorMessage = "{0}长度不能超过{1}!")]
         public string? StudentCode { get; set; }
@@ -21,8 +20,7 @@ namespace Application.Constracts.Dtos
         /// <summary>
         /// 学生姓名
         /// </summary>
-        [SugarColumn(ColumnDescription = "学生姓名", Length = 20, CreateTableFieldSort = 20)]
-        [DisplayName("班级编码")]
+        [DisplayName("学生学号")]
         [Required(ErrorMessage = "{0}必填")]
         [MaxLength(20, ErrorMessage = "{0}长度不能超过{1}!")]
         public string? StudentName { get; set; }
@@ -30,8 +28,7 @@ namespace Application.Constracts.Dtos
         /// <summary>
         /// 班级ID
         /// </summary>
-        [SugarColumn(ColumnDescription = "班级ID", Length = 50, CreateTableFieldSort = 30)]
-        [DisplayName("班级编码")]
+        [DisplayName("班级ID")]
         //[Required(ErrorMessage = "{0}必填")]
         [MaxLength(50, ErrorMessage = "{0}长度不能超过{1}!")]
         public Guid? ClassId { get; set; }
@@ -39,10 +36,9 @@ namespace Application.Constracts.Dtos
         /// <summary>
         /// 学生类型
         /// </summary>
-        [SugarColumn(ColumnDescription = "学生类型", Length = 50, CreateTableFieldSort = 50)]
-        [DisplayName("班级编码")]
+        [DisplayName("学生类型")]
         [Required(ErrorMessage = "{0}必填")]
-        [MaxLength(20, ErrorMessage = "{0}长度不能超过{1}!")]
+        [MaxLength(50, ErrorMessage = "{0}长度不能超过{1}!")]
         public StuTypeEnum StuType { get; set; }
 
 
