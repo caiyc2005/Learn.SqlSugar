@@ -106,6 +106,12 @@ namespace Application.Services
             return await base.DeleteSoftAsync(id);
         }
 
+        /// <summary>
+        /// 分配班级班主任信息
+        /// </summary>
+        /// <param name="classid"></param>
+        /// <param name="teacherid"></param>
+        /// <returns></returns>
         [DisplayName("分配班主任")]
         public async Task<bool> SetClassManagerAsync(Guid classid,Guid teacherid)
         {
