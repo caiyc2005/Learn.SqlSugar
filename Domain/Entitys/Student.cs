@@ -27,11 +27,6 @@ namespace Domain.Entitys
         [SugarColumn(ColumnDescription = "班级ID", Length = 50, CreateTableFieldSort = 30)]
         public Guid? ClassId { get; set; }
 
-        /// <summary>
-        /// 家长ID
-        /// </summary>
-        [SugarColumn(ColumnDescription = "家长ID", Length = 50, CreateTableFieldSort = 40)]
-        public Guid? ParentId { get; set; }
 
         /// <summary>
         /// 学生类型
@@ -50,7 +45,7 @@ namespace Domain.Entitys
         /// <summary>
         /// 家长信息，一对多
         /// </summary>
-        [Navigate(NavigateType.OneToOne, nameof(Parent.Id))]
+        [Navigate(NavigateType.OneToOne, nameof(Parent.StudentId))]
         public List<Parent> ParentList { get; set; }
 
     }
