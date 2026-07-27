@@ -2,6 +2,7 @@
 using Domain.Entitys;
 using Domain.Shared.Consts;
 using Furion.DynamicApiController;
+using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using SqlSugarCoreExtra.Furion.Component.Repositorys;
 using SqlSugarCoreExtra.Furion.Component.ServiceExts;
@@ -18,6 +19,17 @@ namespace Application.Services
         public TeacherService(IRepo<Teacher, Guid> repository) : base(repository)
         {
 
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        public override async Task<TeacherResponse> GetAsync(Guid id)
+        {
+            var tea = await Queryable().Includes(x => x.GradeData).FirstAsync();
+            return tea.Adapt<TeacherResponse>();
         }
     }
 }
