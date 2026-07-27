@@ -32,8 +32,8 @@ namespace Application.Constracts.Dtos
         /// </summary>
         [SugarColumn(ColumnDescription = "班级ID", Length = 50, CreateTableFieldSort = 30)]
         [DisplayName("班级编码")]
-        [Required(ErrorMessage = "{0}必填")]
-        [MaxLength(20, ErrorMessage = "{0}长度不能超过{1}!")]
+        //[Required(ErrorMessage = "{0}必填")]
+        [MaxLength(50, ErrorMessage = "{0}长度不能超过{1}!")]
         public Guid? ClassId { get; set; }
 
         /// <summary>
